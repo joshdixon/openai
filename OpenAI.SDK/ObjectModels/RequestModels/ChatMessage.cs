@@ -161,7 +161,7 @@ public class FunctionParameterPropertyValue
     ///     For examples, see https://json-schema.org/understanding-json-schema/reference/object.html
     /// </summary>
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "string";
+    public object Type { get; set; } = "string";
 
     /// <summary>
     ///     Optional. Argument description.
@@ -174,6 +174,18 @@ public class FunctionParameterPropertyValue
     /// </summary>
     [JsonPropertyName("enum")]
     public IList<string>? Enum { get; set; }
+    
+    /// <summary>
+    ///     Optional. If the type is an array, this is the schema of the array items.
+    /// </summary>
+    [JsonPropertyName("items")]
+    public FunctionParameterPropertyValue? Items { get; set; }
+    
+    /// <summary>
+    ///     Optional. If the type is an object, this is the schema of the object.
+    /// </summary>
+    [JsonPropertyName("properties")]
+    public IDictionary<string, FunctionParameterPropertyValue>? Properties { get; set; }
 }
 
 public class FunctionDefinitionBuilder
